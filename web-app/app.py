@@ -1,10 +1,11 @@
+from req_stuff import *
 from credential_handler import *
 from flask import Flask, redirect, request
 app = Flask(__name__)
 
 
 
-redir_url = "http://www.strava.com/oauth/authorize?client_id={}&response_type=code&redirect_uri=http://localhost:5000/exchange_token&approval_prompt=force&scope=read,activity:read_all".format(get_client_id())
+redir_url = "http://www.strava.com/oauth/authorize?client_id={}&response_type=code&redirect_uri=http://localhost:5000/exchange_token&approval_prompt=force&scope=read,activity:read".format(get_client_id())
 
 @app.route('/')
 def auth():
@@ -14,8 +15,9 @@ def auth():
 @app.route('/exchange_token')
 def get_token():
 	
-	request.args.get('code')
-	return "Got the auth code"
+	code = request.args.get('code')
+	response = authenticate(get_client_id(), get_client_secret(), code)
+	return get_activities(response.json()['access_token']).content
 
 
 if __name__ == '__main__':
