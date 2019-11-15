@@ -26,15 +26,19 @@ def get_token():
 	activities = get_activities(response.json()['access_token']).json()
 	data = []
 	for a in activities:
+		route = []
 		for p in polyline.decode(a['map']['summary_polyline']):
-			data.append(p)
-	plt.scatter(*zip(*data), s=0.5)	
-	img = io.BytesIO()
-	plt.savefig(img, format='png')
-	img.seek(0)
-	graph_url = base64.b64encode(img.getvalue()).decode()
-	plt.close()
-	return render_template('asdf.html', graph='data:image/png;base64,{}'.format(graph_url), data=data, g_key=get_g_api())
+			route.append({'lat':p[0], 'lng':p[1]})
+		data.append(route)
+	#plt.scatter(*zip(*data), s=0.5)	
+	#img = io.BytesIO()
+	#plt.savefig(img, format='png')
+	#img.seek(0)
+	#graph_url = base64.b64encode(img.getvalue()).decode()
+	#plt.close()
+	#data = base64.b64encode(bytes(json.dumps(data), 'utf8'))
+	#return render_template('asdf.html', graph='data:image/png;base64,{}'.format(graph_url), data=data, g_key=get_g_api())
+	return render_template('asdf.html', data=data, g_key=get_g_api())
 
 if __name__ == '__main__':
     app.run()
