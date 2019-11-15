@@ -8,6 +8,14 @@ Actuall... Just implement basic Strava Heat maps for free.
 ## The Result
 ![Example_map](https://github.com/arostron/jay-strava/blob/master/it-works.png)
 
+## TODOs
+- Refactor source code
+- Adjust initial centre of map
+- add cool colors
+- Dockerize 
+- Add a login screen
+- make credentials persist
+
 ## Resources
 
 ### Strava
