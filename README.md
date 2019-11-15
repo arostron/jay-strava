@@ -16,3 +16,4 @@ https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 
 ### Flask tutorials
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+https://technovechno.com/creating-graphs-in-python-using-matplotlib-flask-framework-pythonanywhere/
