@@ -1,8 +1,11 @@
 from req_stuff import *
 from credential_handler import *
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, render_template
 import matplotlib.pyplot as plt
 import polyline
+import io
+import base64
+
 
 app = Flask(__name__)
 
@@ -25,9 +28,13 @@ def get_token():
 	for a in activities:
 		for p in polyline.decode(a['map']['summary_polyline']):
 			data.append(p)
-	plt.scatter(*zip(*data))
-	plt.savefig("map.png")
-	return "Image saved"
+	plt.scatter(*zip(*data), s=0.5)	
+	img = io.BytesIO()
+	plt.savefig(img, format='png')
+	img.seek(0)
+	graph_url = base64.b64encode(img.getvalue()).decode()
+	plt.close()
+	return render_template('graphs.html', graph='data:image/png;base64,{}'.format(graph_url), data=data)
 
 if __name__ == '__main__':
     app.run()
