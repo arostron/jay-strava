@@ -11,7 +11,6 @@ def authenticate(client_id, client_secret, code):
 	    'code': (None, str(code)),
 	    'grant_type': (None, 'authorization_code'),
 	}
-	print(files)	
 	return requests.post('https://www.strava.com/oauth/token', files=files)
 
 
