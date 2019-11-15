@@ -20,5 +20,5 @@ def get_activities(bear):
 	    'authorization': 'Bearer {}'.format(bear),
 	}
 	
-	response = requests.get('https://www.strava.com/api/v3/athlete/activities?per_page=30', headers=headers)
+	response = requests.get('https://www.strava.com/api/v3/athlete/activities?per_page=200', headers=headers)
 	return response	
