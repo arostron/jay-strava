@@ -5,6 +5,8 @@ Alex's project for Program-inator 2019
 Use Strava Dev API to access my longboarding data!
 Actuall... Just implement basic Strava Heat maps for free. 
 
+## The Result
+![Example_map](https://github.com/arostron/jay-strava/blob/master/it-works.png)
 
 ## Resources
 
