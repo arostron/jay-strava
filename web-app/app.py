@@ -34,7 +34,7 @@ def get_token():
 	img.seek(0)
 	graph_url = base64.b64encode(img.getvalue()).decode()
 	plt.close()
-	return render_template('graphs.html', graph='data:image/png;base64,{}'.format(graph_url), data=data)
+	return render_template('asdf.html', graph='data:image/png;base64,{}'.format(graph_url), data=data, g_key=get_g_api())
 
 if __name__ == '__main__':
     app.run()

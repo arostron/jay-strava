@@ -12,5 +12,8 @@ def get_client_secret():
 def get_client_id():
 	return creds()['client_id']
 
+def get_g_api():
+	return creds()['g_api']
+
 if __name__ == "__main__":
 	print(get_client_id())
